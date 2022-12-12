@@ -82,8 +82,10 @@ Y de esta forma, solo se agregaría lo que está entre esos commit, pero no ello
 ## Para considerar seriamente
 
 El uso del cherry-pick está dentro del marco de ocasiones muy especiales, donde no se tienen más opciones o es la más práctica, sin embargo, no es para nada recomendable realizarlo de manera constante. 
-Por la naturaleza de los commit, que guardan una copia completa del proyecto, un cherry pick es un commit nuevo que cambia la historia del proyecto. podemos ver que ahora, los hash de los commit con cherry-pick son distintos a los de la rama master:
-![git log](img/log-2.png)
+Por la naturaleza de los commit, que guardan una copia completa del proyecto, un cherry pick es un commit nuevo que cambia la historia del proyecto. podemos ver que ahora, los hash de los commit con cherry-pick son distintos a los de la rama master:  
+
+![git log](img/log-2.png)  
+
 ![git log](img/log-3.png)
 
 Además, estos commit fueron cambios simples, hechos para estos ejemplos, pero la vida real es más compleja y la mayoría de las veces que se realizan cherry-pick, el resultado agrega **conflictos**, lo que complica más la operación. 
