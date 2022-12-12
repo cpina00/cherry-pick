@@ -21,12 +21,14 @@ En este caso, para "agrupar" todos los commit de 1 funcionalidad en una nueva ra
 
 
 Si tenemos muchos commit que "pasar", se pueden agrupar los commit para no repetir muchas veces el comando, siempre y cuando estén en la historia secuencialmente. Por ejemplo, si tenemos lo siguiente para
-` $ git log --oneline`
+` $ git log --oneline`  
+
 ![git log](img/git-log.png)
 
  Tenemos 2 opciones (con variantes) para separar los cambios, pero todas comienzan igual: el paso 1 y 2 se realizan.
- ` $ git checkout  b6b8408`
- ` $ git switch -c function1`
+1.  ` $ git checkout  b6b8408`
+2.  ` $ git switch -c function1`  
+
 ![git log](img/git-checkout.png)
 
 Ahora, estando antes de los commit mezclados, hacemos la selección de los commit con cherry-pick, aunque... 
@@ -37,33 +39,44 @@ Los commit deben ser seleccionados desde el más antiguo al más reciente
 
 
 ### Opción 1, uno por uno, v1
-` $ git cherry-pick d43b588`
-` $ git cherry-pick d43b588`
-` $ git cherry-pick d43b588`
-...
-![git cherry-pick](img/cherry-pick-1.png)
+- ` $ git cherry-pick d43b588`
+- ` $ git cherry-pick d43b588`
+- ` $ git cherry-pick d43b588`
+...  
 
-### Opción 1, uno por uno, v2
-` $ git cherry-pick d43b588 d43b588 d43b588 ...`
+![git cherry-pick](img/cherry-pick-1.png)  
+
+
+### Opción 1, uno por uno, v2  
+
+` $ git cherry-pick d43b588 d43b588 d43b588 ...`  
+
 ![git cherry-pick](img/cherry-pick-2.png)
 
 ### Opción 2, agrupar por montón 
-Para agrupar por montón, necesitamos que los commit estén seguidos en la historia original. o sea, si miramos nuevamente el log
-![git log](img/log-2.png)
+Para agrupar por montón, necesitamos que los commit estén seguidos en la historia original. o sea, si miramos nuevamente el log  
+
+![git log](img/log-2.png)  
+
 podemos realizar 3 agrupamientos, 
 1. desde el commit 1 al 3 de la funcion1
 2. desde el commit 4 al 6 de la funcion1
 3. desde el commit 2 al 4 de la funcion2
 
-para eso, el comando es 
-` $ git cherry-pick hash-inicio^..hash-final`
-por ejemplo, para el primer grupo de commit, tenemos lo siguiente:
+para eso, el comando es  
+
+` $ git cherry-pick hash-inicio^..hash-final`  
+
+por ejemplo, para el primer grupo de commit, tenemos lo siguiente:  
+
 ![git cherry pick](img/cherry-pick-3.png)
 
 ***Considerar***
-en el comando anterior, el acento circunflejo **^** significa que los hash-inicio y hash-final se agregan. sería posible también hacer:
-` $ git cherry-pick hash-inicio..hash-final`
-Y de esta forma, solo se agregaría lo que está entre esos commit, pero no ellos mismos. Tal como en matemática tenemos parentesis abierto o circulo blanco (no incluye) y parentesis cerrado o circulo negro (si incluye).
+en el comando anterior, el acento circunflejo **^** significa que los hash-inicio y hash-final se agregan. sería posible también hacer:  
+
+- ` $ git cherry-pick hash-inicio..hash-final`  
+
+Y de esta forma, solo se agregaría lo que está entre esos commit, pero no ellos mismos. Tal como en matemática tenemos parentesis abierto o circulo blanco (no incluye) y parentesis cerrado o circulo negro (si incluye). el **^** indica que **si** incluye los commit inicial y final.
 
 
 ## Para considerar seriamente
